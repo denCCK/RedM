@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title th:text="${title}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+</head>
+<body>
+<header th:insert="~{blocks/header::header}"></header>
+<div class="d-flex justify-content-center">
+    <p class="display-3">Статистика</p>
+</div>
+<div class="d-flex justify-content-center">
+    <nav class="small" id="toc">
+        <ul class="list-unstyled">
+            <li class="my-2">
+                <button class="btn d-flex align-items-center border-0 collapsed" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#contents1-collapse" aria-controls="contents1-collapse">Задачи</button>
+                <ul class="list-unstyled ps-3 collapse" id="contents1-collapse" style="">
+                    <li><a th:href="@{/user/{id}/allIssues(id=${id})}" class="btn btn-outline-secondary d-flex align-items-center">Все задачи</a></li>
+                    <li><a th:href="@{/user/{id}/less50Issues(id=${id})}" class="btn btn-outline-secondary d-flex align-items-center">Степень выполнения меньше 50%</a></li>
+                    <li><a th:href="@{/user/{id}/more50Issues(id=${id})}" class="btn btn-outline-secondary d-flex align-items-center">Степень выполнения больше 50%</a></li>
+                    <li>
+                        <a class="btn btn-outline-secondary d-flex align-items-center" href="#" data-bs-toggle="dropdown">По статусу (По умолчанию в работе)</a>
+                        <ul class="dropdown-menu">
+                            <li><a th:href="@{/user/{id}/byStatusIssues/1(id=${id})}" class="dropdown-item">Новая</a></li>
+                            <li><a th:href="@{/user/{id}/byStatusIssues/2(id=${id})}" class="dropdown-item">В работе</a></li>
+                            <li><a th:href="@{/user/{id}/byStatusIssues/3(id=${id})}" class="dropdown-item">Решена</a></li>
+                            <li><a th:href="@{/user/{id}/byStatusIssues/4(id=${id})}" class="dropdown-item">Нужен отлик</a></li>
+                            <li><a th:href="@{/user/{id}/byStatusIssues/5(id=${id})}" class="dropdown-item">Закрыта</a></li>
+                            <li><a th:href="@{/user/{id}/byStatusIssues/6(id=${id})}" class="dropdown-item">Отклонена</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="btn btn-outline-secondary d-flex align-items-center" href="#" data-bs-toggle="dropdown">По приоритету (По умолчанию в работе)</a>
+                        <ul class="dropdown-menu">
+                            <li><a th:href="@{/user/{id}/byPriorityIssues/1(id=${id})}" class="dropdown-item">Низкий</a></li>
+                            <li><a th:href="@{/user/{id}/byPriorityIssues/2(id=${id})}" class="dropdown-item">Нормальный</a></li>
+                            <li><a th:href="@{/user/{id}/byPriorityIssues/3(id=${id})}" class="dropdown-item">Высокий</a></li>
+                            <li><a th:href="@{/user/{id}/byPriorityIssues/4(id=${id})}" class="dropdown-item">Срочный</a></li>
+                            <li><a th:href="@{/user/{id}/byPriorityIssues/5(id=${id})}" class="dropdown-item">Немедленный</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="my-2">
+                <button class="btn d-flex align-items-center border-0 collapsed" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#contents2-collapse" aria-controls="contents2-collapse">Трудозатраты:</button>
+                <ul class="list-unstyled ps-3 collapse" id="contents2-collapse" style="">
+                    <li><a th:href="@{/user/{id}/dates/1(id=${id})}" class="btn btn-outline-secondary d-flex align-items-center">Все трудозатраты</a></li>
+                    <li><a th:href="@{/user/{id}/dates/2(id=${id})}" class="btn btn-outline-secondary d-flex align-items-center">Дни с трудозатратами меньше нормы</a></li>
+                    <li><a th:href="@{/user/{id}/dates/3(id=${id})}" class="btn btn-outline-secondary d-flex align-items-center">Недели с трудозатрами меньше нормы</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</div>
+<footer th:insert="~{blocks/footer::footer}"></footer>
+</body>
+</html>
